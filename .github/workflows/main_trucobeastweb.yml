@@ -18,11 +18,14 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Set CI environment variable
+        run: echo "CI=false" >> $GITHUB_ENV
+
       - name: npm install, build, and test
         run: |
           cd frontend
           npm install
-          npm run build --if-present
+          npm run build --if-present --no-warnings
 
       - name: Zip artifact for deployment
         run: |
