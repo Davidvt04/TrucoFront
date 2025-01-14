@@ -30,13 +30,13 @@ jobs:
       - name: Prepare artifact for deployment
         run: |
           cd frontend/build
-          zip -r ../../release.zip ./*
+          zip -r release.zip ./*
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
         with:
           name: release
-          path: release.zip
+          path: frontend/build/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # Necesario para solicitar el JWT.
+      id-token: write
 
     steps:
       - name: Download artifact
