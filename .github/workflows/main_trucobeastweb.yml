@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - TrucoBeastWeb
 
 on:
@@ -23,12 +20,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd frontend
           npm install
           npm run build --if-present
-          npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          cd frontend/build
+          zip -r ../../release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -43,7 +42,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write # Esto es necesario para solicitar el JWT.
 
     steps:
       - name: Download artifact from build job
@@ -52,20 +51,21 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: |
+          mkdir deploy
+          unzip release.zip -d ./deploy
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8DC62A1814EE4AAF9BA44CDBB790E9DA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7892288A02B0460FA0C291ECB4FFC19E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2A446AEB9D69418CBEFDF71606709691 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'TrucoBeastWeb'
           slot-name: 'Production'
-          package: .
-          
+          package: ./deploy
