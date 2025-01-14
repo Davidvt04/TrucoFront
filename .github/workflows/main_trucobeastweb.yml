@@ -46,7 +46,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: release
-          path: release.zip
+
+      - name: Verify downloaded files
+        run: |
+          ls -l # List files to ensure release.zip is present
 
       - name: Prepare deployment folder
         run: |
