@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import tokenService from './services/token.service';
 import { jwtDecode } from 'jwt-decode';
 import LeavingGameModal from './components/LeavingGameModal';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 function AppNavbar() {
   const [roles, setRoles] = useState([]);
@@ -11,6 +12,7 @@ function AppNavbar() {
   const navigate = useNavigate();
   const [leavingModal, setLeavingModal] = useState(false);
   const logoChico = "https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/resources/images/logoChico.png"
+  const isIndexPage = window.location.pathname === '/index.html';
   useEffect(() => {
     if (jwt) {
       setRoles(jwtDecode(jwt).authorities);
@@ -70,7 +72,7 @@ function AppNavbar() {
         overflow: 'hidden',
         background: 'transparent',   // <-- Transparent instead of white
         top: 0,
-        position:"fixed",
+        position: "fixed",
         left: 0,
         width: '20%',
         zIndex: 9999,                // <-- Ensures it stays above other elements
@@ -92,13 +94,17 @@ function AppNavbar() {
         modalIsOpen={leavingModal}
         setIsOpen={setLeavingModal}
       />
-      {/* 
-        If you need your adminLinks or userLinks, place them here, 
-        for example in a 'nav' or other container.
-        
-        {adminLinks}
-        {userLinks}
-      */}
+      {isIndexPage &&
+        <Modal isOpen={true} centered>
+          <ModalHeader style={{ textAlign: 'center' }}>¿Ready para un truco?</ModalHeader>
+          <div style={{ textAlign: 'center', padding: '20px' }}>
+            <img src={"https://media.tenor.com/wyoZT-pl_3IAAAAC/monkey-waving.gif"} alt="Gif" style={{ width: '100%', maxWidth: '300px' }} />
+          </div>
+          <ModalFooter style={{ display: 'flex', justifyContent: 'center' }}>
+            <Button color="primary" onClick={handleClick}>Empezar</Button>
+          </ModalFooter>
+        </Modal>
+      }
     </div>
   );
 }

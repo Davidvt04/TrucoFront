@@ -36,9 +36,8 @@ export default function Login() {
       const data = await response.json();
       tokenService.setUser(data);
       await tokenService.updateLocalAccessToken(data.token);
-      //Quiero recargar la página para que se actualice el token
-      navigate('/home');
-      window.location.reload();
+      window.location.href = '/index.html';
+      //navigate('/index.html');
     } catch (error) {
       setMessage(error.message);
     }
