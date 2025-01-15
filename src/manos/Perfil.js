@@ -290,7 +290,7 @@ const Perfil = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
   const [perfil, setPerfil] = useFetchState(
     [],
-    `/api/v1/partidajugador/jugadores/codigoPartida/${game.codigo}`,
+    `https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/partidajugador/jugadores/codigoPartida/${game.codigo}`,
     jwt,
     setMessage,
     setVisible
@@ -304,7 +304,7 @@ const Perfil = forwardRef((props, ref) => {
 
   useEffect(() => {
     const cliente = new Client({
-      brokerURL: "ws://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/resources/images/logoChico.png/ws",
+      brokerURL: "wss://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/resources/images/logoChico.png/ws",
       connectHeaders: {
         Authorization: `Bearer ${jwt}`
       }

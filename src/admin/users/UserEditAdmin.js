@@ -54,7 +54,7 @@ export default function UserEditAdmin() {
   );
 const [imageModalOpen, setImageModalOpen] = useState(false);
 
-  const [imagenesDisponibles, setImagenesDisponibles] = useFetchState([], "/api/v1/fotos/perfiles", jwt, setMessage, setVisible);
+  const [imagenesDisponibles, setImagenesDisponibles] = useFetchState([], "https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/fotos/perfiles", jwt, setMessage, setVisible);
 
   const handleImageSelect = (imageName) => {
     setPlayer({

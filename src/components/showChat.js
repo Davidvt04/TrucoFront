@@ -79,7 +79,7 @@ const Chat = forwardRef((props, ref) => {
 
   useEffect(() => {
     const cliente = new Client({
-      brokerURL: "ws://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/ws",
+      brokerURL: "wss://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/ws",
       connectHeaders: {
         Authorization: `Bearer ${jwt}`,
       },

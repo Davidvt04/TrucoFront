@@ -38,7 +38,7 @@ const PlayingModal = forwardRef((props, ref) => {
     const [florTrigger, setFlorTrigger] = useState(0);
 
     const [posicion, setPosicion] = useFetchState(
-        {}, `/api/v1/partidajugador/miposicion/${game.id}/${usuario.id}`, jwt, setMessage, setVisible
+        {}, `https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/partidajugador/miposicion/${game.id}/${usuario.id}`, jwt, setMessage, setVisible
     );
 
     const [nombresJugadores, setNombresJugadores] = useState([]);
