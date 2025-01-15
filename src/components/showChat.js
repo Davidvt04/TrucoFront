@@ -16,7 +16,7 @@ const Chat = forwardRef((props, ref) => {
   const [mensaje, setMensaje] = useState("");
 
   function fetchMensajesIniciales() {
-    fetch('api/v1/chat/' + props.idChat, {
+    fetch('https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/chat/' + props.idChat, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${jwt}`,
