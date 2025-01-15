@@ -1,0 +1,737 @@
+/* PlayingModal.css */
+/* Ensure the html and body take up the full viewport height */
+.playing-modal-container {
+  position: fixed; /* Ensures the modal overlays the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevents overflow within the modal */
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
+  z-index: -2; /* Ensures the modal is above other content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Keyframe Animations */
+@keyframes holoGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+/* Enhanced Drop Shadow Glow Animation */
+@keyframes dropShadowGlowCuadro { 
+  0%, 100% {
+      text-shadow: 
+        /* Edge Shadows */
+        -0.5px -0.5px 0 rgb(143, 43, 0), 
+        0.5px -0.5px 0 rgb(143, 43, 0), 
+        -0.5px 0.5px 0 rgb(143, 43, 0), 
+        0.5px 0.5px 0 rgb(143, 43, 0), 
+        /* Enhanced Glow Layers */
+        0 0 20px rgb(255, 115, 0),
+        0 0 30px rgb(255, 115, 0),
+        0 0 40px rgb(255, 115, 0);
+  }
+  50% {
+      text-shadow: 
+        /* Edge Shadows */
+        -0.5px -0.5px 0 rgb(143, 43, 0), 
+        0.5px -0.5px 0 rgb(143, 43, 0), 
+        -0.5px 0.5px 0 rgb(143, 43, 0), 
+        0.5px 0.5px 0 rgb(143, 43, 0), 
+        /* Enhanced Glow Layers */
+        0 0 40px rgb(255, 115, 0),
+        0 0 60px rgb(255, 115, 0),
+        0 0 80px rgb(255, 115, 0);
+  }
+}
+
+@keyframes slightSwirl {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes slighterSwirl {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes dropShadowGlow {
+  0%, 100% {
+    text-shadow:
+    0 0 10px rgba(255, 140, 0, 1);
+  }
+  50% {
+    text-shadow:    
+    0 0 20px rgba(255, 183, 76, 1);
+  }
+}
+@keyframes dropShadowGlowMusica {
+  0%, 100% {
+    text-shadow: 
+    0 0 10px rgba(255, 140, 0, 1);
+  }
+  50% {
+    text-shadow:
+    0 0 20px rgba(255, 183, 76, 1);
+  }
+}
+@keyframes dropShadowGlowContainer {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 183, 76, 0.8));
+  }
+}
+
+/* Fade in and out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes particleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-75%, -75%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-75%, -75%) scale(0.5);
+    opacity: 0;
+  }
+}
+/* Original glow animation */
+@keyframes dropShadowGlowContainer {
+  0%, 100% {
+    box-shadow: 0px 4px 10px rgba(255, 166, 0,  0.5);
+  }
+  50% {
+    box-shadow: 0px 4px 20px rgba(255, 166, 0, 0.7);
+  }
+}
+
+/* Overlay Styles */
+.sunset-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%, 
+    rgba(255, 223, 186, 0.5) 0%, 
+    rgba(255, 183, 76, 0.5) 40%, 
+    rgba(255, 140, 0, 0.5) 70%
+  );
+  background-size: 400% 400%;
+  animation: holoGlow 3s ease-in-out infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+/* Swirl Animation */
+.swirl {
+  animation: slightSwirl 5s ease-in-out infinite;
+}
+
+/* Swirl and Glow Text */
+.swirl-glow-text {
+  display: inline-block;
+  animation: slightSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+  color: aliceblue;
+  font-size: large;
+}
+
+.swirl-glow-textMusica {
+  display: inline-block;
+  animation: slightSwirl 5s ease-in-out infinite, dropShadowGlowMusica 3s ease-in-out infinite;
+  color: aliceblue;
+  font-size: larger;
+}
+
+.swirl-glow-text2 {
+  display: inline-block;
+  animation: slightSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+  color: aliceblue;
+}
+/* Base Card Styles */
+.base-card {
+  width: 100px;
+  height: 159px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 5px 4px 8px rgba(227, 128, 41, 1);
+  transform-origin: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  filter: none;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.base-card:hover {
+  transform: rotateY(10deg);
+  box-shadow: 10px 4px 8px rgba(243, 126, 24, 1);
+}
+
+/* Grayscale and Brightness for Invalid Turns */
+.invalid-turn {
+  cursor: not-allowed;
+  filter: grayscale(80%) brightness(0.5);
+}
+
+/* Container Styles */
+.cartas-jugador-container {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(25deg);
+  display: flex;
+  gap: 10px;
+  perspective: 800px;
+  transform-origin: center bottom;
+}
+
+.cartas-mesa-container {
+  position: fixed;
+  top: 39%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+/* Card Container */
+.card-container {
+  position: relative;
+  width: 100px;
+  height: 150px;
+}
+
+.card-container.mesa {
+  width: 83px;
+  top: -26%;
+  height: 120px;
+}
+
+/* Card Image */
+.card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Dragged Card Styles */
+/* PlayingModal.css */
+
+/* PlayingModal.css */
+
+.dragged-card {
+  position: absolute; /* or fixed */
+  width: 100px;
+  height: 150px;
+  /* Remove transform */
+  z-index: 1000;
+  pointer-events: none;
+  border-radius: 8px;
+  box-shadow: 5px 4px 8px rgba(227, 128, 41, 1);
+  overflow: hidden;
+}
+
+
+
+
+.dragged-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.dragged-card.swirl {
+  animation: slightSwirl 5s ease-in-out infinite;
+}
+
+/* Drop Area */
+.drop-area {
+  position: absolute;
+  top: 50%; /* Adjust as needed */
+  left: 50%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  width: 500px; /* Adjust size */
+  height: 200px;
+  border: 2px dashed rgba(255, 255, 255, 0.5); /* Visual indicator */
+  z-index: 1;
+}
+
+/* Truco Button Container */
+.truco-button-container {
+  width: 150px;
+  height: 75px;
+  margin: 5px;
+  left: 66%;
+  position: fixed;
+  transform: translateX(-50%);
+  top: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.envido-button-container {
+  width: 150px;
+  height: 75px; 
+  margin: 5px;
+  font-size: large;
+  left: 82%;
+  position: fixed;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  top: 87%;
+}
+
+.envido-button-container .flor-button {
+  position: absolute;
+  top: -85px;
+  left: 28%;
+  transform: translateX(-50%);
+  height: 75px; 
+}
+/* Truco Buttons */
+.truco-button-container button {
+  padding: 10px;
+  border: 3px solid rgb(212, 113, 0);
+  border-radius: 5px;
+  font-size: large;
+  background-color: rgba(255, 166, 0,  0.5);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  animation: dropShadowGlowContainer 3s ease-in-out infinite;
+}
+
+.envido-button-container button {
+  padding: 10px;
+  border: 3px solid rgb(212, 113, 0);
+  border-radius: 5px;
+  background-color: rgba(255, 166, 0,  0.5);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.truco-button-container button:hover {
+  background-color: darkorange;
+}
+.envido-button-container button:hover {
+  background-color: darkorange;
+}
+.cuadros-canto {
+  position: relative; /* Needed for stacking context and centering */
+  border-radius: 10px;
+  max-width: 400px;
+  width: 80%;
+  height: 120%;
+  color: rgb(255, 187, 0);
+  text-align: center;
+  animation: dropShadowGlowCuadro 3s ease-in-out infinite, slightSwirl 2.5s ease-in-out infinite, fadeInOut 5s ease-in-out infinite;
+  z-index: 0; /* Base level */
+}
+
+.cuadros-canto h3 {
+  position: relative;
+  font-size: 40px;
+  z-index: 2; /* Ensure text is above particles */
+}
+
+
+
+/* Base for both pseudo-elements: a single small circle at the center */
+
+/* Base for both pseudo-elements: a single small orange circle at the center */
+@keyframes particleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Base for both pseudo-elements: a single small orange circle at the center */
+.cuadros-canto::before,
+.cuadros-canto::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: orange;
+  border-radius: 50%; /* Remove or adjust for square particles */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: particleAnim 3s infinite ease-in-out;
+  z-index: 1; /* Behind text (z=2) but above background (z=0) */
+}
+
+/* First cluster of confetti: reduced spread */
+.cuadros-canto::before {
+  box-shadow:
+    /* Reemplazamos 'orange' por tonos variados en un ciclo */
+    -10px -10px #FF4500,
+    15px -20px #FF7F50,
+    -20px 15px #FFA500,
+    25px 10px #FF8C00,
+    -30px 5px #FF6347,
+    30px -15px #FFD700,
+    -5px 30px #FFB347,
+    10px 25px #FFAE42,
+    -25px -25px #FF4500,
+    20px -5px #FF7F50,
+    -40px 20px #FFA500,
+    40px -10px #FF8C00,
+    -15px 40px #FF6347,
+    15px 35px #FFD700,
+    -35px -15px #FFB347,
+    35px 5px #FFAE42,
+    -10px 50px #FF4500,
+    10px -35px #FF7F50,
+    -45px 0px #FFA500,
+    45px 25px #FF8C00,
+    -60px -40px #FF6347,
+    60px -20px #FFD700,
+    -50px 60px #FFB347,
+    50px 50px #FFAE42,
+    -55px 30px #FF4500,
+    55px -10px #FF7F50,
+    -20px 55px #FFA500,
+    20px -60px #FF8C00,
+    -60px -25px #FF6347,
+    80px 15px #FFD700,
+    -60px 40px #FFB347,
+    60px -50px #FFAE42;
+  animation-delay: 0.5s;
+}
+
+/* Segundo bloque con menor dispersión */
+.cuadros-canto::after {
+  box-shadow:
+    -5px -30px #FF4500,
+    5px -40px #FF7F50,
+    -25px -20px #FFA500,
+    25px -25px #FF8C00,
+    -35px 30px #FF6347,
+    35px 20px #FFD700,
+    -20px 40px #FFB347,
+    20px 50px #FFAE42,
+    -50px 10px #FF4500,
+    50px -5px #FF7F50,
+    -15px -45px #FFA500,
+    15px -10px #FF8C00,
+    -45px 35px #FF6347,
+    45px 40px #FFD700,
+    -30px 50px #FFB347,
+    30px -30px #FFAE42,
+    -10px -50px #FF4500,
+    5px 35px #FF7F50,
+    -25px -5px #FFA500,
+    25px -15px #FF8C00,
+    -60px -60px #FF6347,
+    60px -45px #FFD700,
+    -55px 45px #FFB347, /* Ajustado */
+    55px 40px #FFAE42,  /* Ajustado */
+    -60px -15px #FF4500, /* Ajustado */
+    60px -40px #FF7F50,  /* Ajustado */
+    -60px 20px #FFA500,  /* Ajustado */
+    60px 60px #FF8C00,   /* Ajustado */
+    -35px -60px #FF6347, /* Ajustado */
+    35px -60px #FFD700,  /* Ajustado */
+    -60px -20px #FFB347, /* Ajustado */
+    60px 35px #FFAE42;   /* Ajustado */
+  animation-delay: 1s;
+}
+
+.res-envido-container {
+  background-color: darkorange;
+  border-radius: 10px;
+  border: 3px solid rgb(212, 113, 0);
+  box-shadow: 0px 4px 10px rgba(255, 166, 0,  0.5);
+  max-width: 400px;
+  width: 80%;
+  height: 120%;
+  text-align: center;
+  animation: dropShadowGlowContainer 3s ease-in-out infinite, fadeInOut 7s ease-in-out infinite;;
+
+}
+
+/* Responder Truco Buttons */
+.responder-truco-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.responder-truco-buttons button {
+  padding: 10px;
+  border: 3px solid rgb(212, 113, 0);
+  border-radius: 5px;
+  background-color: rgba(255, 166, 0, 0.5);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  animation: none;
+}
+
+.responder-truco-buttons button:hover {
+  background-color: darkorange;
+}
+
+.animated-button {
+  animation: dropShadowGlowContainer 3s ease-in-out infinite;
+}
+
+/* Player Heading */
+.player-heading {
+  color: orange;
+  top: 2%;
+  left: 7%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+.turno-heading {
+  color: orange;
+  top: 2%;
+  right: 7%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+
+.puntos-nuestros {
+  color: orange;
+  top: 10%;
+  left: 7%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+
+.puntos-ellos {
+  color: orange;
+  top: 10%;
+  left: 75%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+.puntaje-EquipoNuestro img {
+  width: 9%; /* Ajusta el tamaño de la imagen */
+  height: 60px; /* Mantén la relación de aspecto correcta */
+  position: absolute; /* Para que la imagen se posicione en el lugar correcto */
+  top: 8%;
+  left: 12%;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+
+/* Estilo para las imágenes del equipo contrario */
+.puntaje-EquipoEllos img {
+  width: 9%; /* Ajusta el tamaño de la imagen */
+  height: 60px; /* Mantén la relación de aspecto correcta */
+  position: absolute; /* Posiciona la imagen de manera similar */
+  top: 8%;
+  left: 81%;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+
+.ganaPunto-EquipoNuestro{
+  color: rgb(255, 0, 0);
+  top: 13%;
+  left: 12%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+.ganaPunto-EquipoEllos{
+  color: rgb(255, 0, 0);
+  top: 13%;
+  left: 82%;
+  font-style: italic;
+  position: fixed;
+  animation: slighterSwirl 5s ease-in-out infinite, dropShadowGlow 3s ease-in-out infinite;
+}
+
+
+/* Card Positioning for Mesa */
+.cartas-mesa-position {
+  position: absolute;
+  left: 50%;
+  top: 39%;
+  transform: translateX(-50%);
+}
+
+.dragged-card {
+    position: absolute;
+    width: 100px; /* Ensure this matches your card dimensions */
+    height: 150px; /* Ensure this matches your card dimensions */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    pointer-events: none;
+    border-radius: 8px;
+    box-shadow: 5px 4px 8px rgba(227, 128, 41, 1);
+    overflow: hidden;
+    /* Optional: Add smooth transition if desired */
+    transition: opacity 0.2s ease;
+}
+
+.dragged-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Ensure the parent container has position: relative */
+.playing-modal-background {
+    position: relative;
+    /* Other styles... */
+}
+
+/* Drop Area Styles */
+.drop-area {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+    transform: translate(-50%, -50%);
+    width: 500px; /* Adjust size as needed */
+    height: 200px;
+    border: 2px dashed rgba(255, 0, 0, 0); /* Visual indicator */
+    z-index: 1;
+    /* Optional: Add background color or other styles */
+}
+
+.play-music-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border: 3px solid rgb(212, 113, 0);
+  border-radius: 5px;
+  background-color: rgba(255, 166, 0,  0.5);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+  animation: dropShadowGlowContainer 3s ease-in-out infinite;
+}
+
+.play-music-button:hover {
+  background-color: darkorange;
+}
+
+.volume-slider-container {
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  gap: 10px;
+  z-index: 2000; /* Ensure it's above other elements */
+  background-color: rgba(255, 166, 0,  0.5);
+  padding: 5px 10px;
+  border: 3px solid rgb(212, 113, 0);
+  animation: dropShadowGlowContainer 3s ease-in-out infinite;
+  border-radius: 5px;
+  /* Add fixed width */
+  width: 315px; /* Adjust as needed */
+  flex-shrink: 0;
+  flex-grow: 0;
+
+}
+.volume-slider-container:hover {
+  background-color: darkorange;
+}
+/* Volume Slider */
+#volume-slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  width: 150px; /* Adjust the width as needed */
+  height: 8px; /* Thickness of the slider track */
+  background: #000000; /* Default track color */
+  outline: none; /* Remove outline on focus */
+  border-radius: 4px; /* Rounded corners for the track */
+  margin: 0 10px; /* Optional: Add some horizontal margin */
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default thumb styling */
+  appearance: none;
+  width: 17px; /* Width of the thumb */
+  height: 17px; /* Height of the thumb */
+  border-radius: 50%; /* Make it circular */
+  background: rgb(145, 94, 0);
+  cursor: pointer; /* Cursor on hover */
+  border: 3px solid rgb(212, 113, 0);
+}
+
+#volume-slider::-webkit-slider-thumb:hover {
+  background: rgba(255, 166, 0, 1);
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}

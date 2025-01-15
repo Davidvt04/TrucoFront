@@ -3,7 +3,6 @@
     "@splidejs/react-splide": "^0.7.12",
     "@stomp/stompjs": "^7.0.0",
     "bootstrap": "^5.3.3",
-    "eslint-plugin-react-hooks": "^5.1.0",
     "filepond": "^4.32.6",
     "filepond-plugin-file-encode": "^2.1.14",
     "filepond-plugin-image-exif-orientation": "^1.0.11",
@@ -39,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^5.1.0"
   }
 }
