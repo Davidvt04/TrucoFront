@@ -29,7 +29,6 @@ java -jar target/*.jar
 ```
 
 Se puede acceder al backend de está aplicacion utilizando este link: [http://localhost:8080/](http://localhost:8080/swagger-ui/index.html)
-
 Se puede iniciar directamente desde Maven usando el plugin de Spring Boot Maven. Si se hace esto se van a tener en cuenta los cambios que haces en el proyecto inmediatamente (los cambios a archivos Java necesitan compilarse tambien - la mayoria utiliza un IDE para esto):
 
 ```
