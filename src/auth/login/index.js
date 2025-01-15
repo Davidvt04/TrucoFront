@@ -20,26 +20,28 @@ export default function Login() {
 
 
   async function handleSubmit({ values }) {
-
     const reqBody = values;
     setMessage(null);
-    await fetch("https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/auth/signin", {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify(reqBody),
-    })
-      .then(function (response) {
-        if (response.status === 200) return response.json();
-        else return Promise.reject("Invalid login attempt");
-      })
-      .then(function (data) {
-        tokenService.setUser(data);
-        tokenService.updateLocalAccessToken(data.token);
-        navigate('/home');
-      })
-      .catch((error) => {
-        setMessage(error);
+    try {
+      const response = await fetch("https://trucobeasts-e0dxg3dvccd5dvb5.centralus-01.azurewebsites.net/api/v1/auth/signin", {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(reqBody),
       });
+  
+      if (response.status !== 200) {
+        throw new Error("Invalid login attempt");
+      }
+  
+      const data = await response.json();
+      tokenService.setUser(data);
+      await tokenService.updateLocalAccessToken(data.token);
+      //Quiero recargar la página para que se actualice el token
+      navigate('/home');
+      window.location.reload();
+    } catch (error) {
+      setMessage(error.message);
+    }
   }
 
 

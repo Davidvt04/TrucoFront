@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   let [type, setType] = useState(null);
   let [authority, setAuthority] = useState(null);
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const registerFormRef = useRef();
 
   function handleButtonClick(event) {
