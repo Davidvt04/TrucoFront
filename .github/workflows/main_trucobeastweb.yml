@@ -51,12 +51,6 @@ jobs:
       - name: List files for debugging
         run: ls -R
 
-      - name: Unzip the artifact
-        run: unzip release -d extracted_build
-
-      - name: List files in extracted_build
-        run: ls -R extracted_build
-
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -70,4 +64,4 @@ jobs:
         with:
           app-name: 'TrucoBeastWeb'
           slot-name: 'Production'
-          package: './extracted_build'
+          package: './frontend/build'
