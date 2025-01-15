@@ -4,25 +4,6 @@
       "route": "/*",
       "serve": "/index.html",
       "statusCode": 200
-    },
-    {
-      "route": "/*",
-      "serve": "/index.html",
-      "methods": [
-        "get",
-        "head",
-        "post",
-        "put",
-        "delete",
-        "connect",
-        "options",
-        "trace",
-        "patch"
-      ],
-      "statusCode": 200,
-      "allowedRoles": [
-        "autenticado"
-      ]
     }
   ]
 }
