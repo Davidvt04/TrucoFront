@@ -57,11 +57,10 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8DC62A1814EE4AAF9BA44CDBB790E9DA  }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7892288A02B0460FA0C291ECB4FFC19E  }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2A446AEB9D69418CBEFDF71606709691  }}
-          auth-type: oidc
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'TrucoBeastWeb'
           slot-name: 'Production'
-          package: './frontend/build'
+          package: './'
