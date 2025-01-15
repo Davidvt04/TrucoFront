@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import "../../static/css/auth/authButton.css";
 import "../../static/css/auth/authPage.css";
 import tokenService from "../../services/token.service";
-
+import { useNavigate } from "react-router-dom";
 const Logout = () => {
 
   const jwt = tokenService.getLocalAccessToken();
-
+  const navigate = useNavigate();
 
   function sendLogoutRequest() {
     if (jwt || typeof jwt === "undefined") {
       tokenService.removeUser();
       window.localStorage.removeItem("jwt");
-      window.location.href = "/";
+      navigate("/");
     }
   }
 

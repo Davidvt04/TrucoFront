@@ -4,18 +4,18 @@ import FormGenerator from "../../components/formGenerator/formGenerator";
 import tokenService from "../../services/token.service";
 import "../../static/css/auth/authButton.css";
 import "../../static/css/index/index.css";
-
 import { loginFormInputs } from "./form/loginFormInputs";
 import logo from '../../static/images/Logo_juego.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [message, setMessage] = useState(null)
   const loginFormRef = React.createRef();
   const jwt = tokenService.getLocalAccessToken();
+  const navigate = useNavigate();
 
   if(jwt){
-    window.location.href = "/home";
+    navigate('/home');
   }
 
 
@@ -35,7 +35,7 @@ export default function Login() {
       .then(function (data) {
         tokenService.setUser(data);
         tokenService.updateLocalAccessToken(data.token);
-        window.location.href = "/home";
+        navigate('/home');
       })
       .catch((error) => {
         setMessage(error);

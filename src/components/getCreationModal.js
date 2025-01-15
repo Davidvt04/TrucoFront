@@ -5,10 +5,12 @@ import { IoCloseCircle } from "react-icons/io5";
 import tokenService from "../services/token.service.js";
 import getErrorModal from "../util/getErrorModal.js";
 import parseSubmit from './getCreationUtils/parseSubmit.js';
+import { useNavigate } from 'react-router-dom';
 
 
 const jwt = tokenService.getLocalAccessToken();
 const user = tokenService.getUser();
+const navigate = useNavigate();
 
 function handleModalVisible(setModalVisible, modalVisible) {
     setModalVisible(!modalVisible);
@@ -100,8 +102,9 @@ const GetCreationModal=forwardRef((props,ref) =>{
             if (json.message) {
                 setMessage(json.message);
                 setVisible(true); 
-              } else 
-              window.location.href = "/partidas?partidaCode="+partidaParseada.codigo;
+              } else{
+                navigate("/partidas?partidaCode="+partidaParseada.codigo);
+              } 
         }
 
       })

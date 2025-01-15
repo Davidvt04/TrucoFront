@@ -5,12 +5,13 @@ import tokenService from "../../services/token.service";
 import FormGenerator from "../../components/formGenerator/formGenerator";
 import { registerFormInputs } from "./form/registerForm";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Register() {
   let [type, setType] = useState(null);
   let [authority, setAuthority] = useState(null);
-
+  const { navigate } = useNavigate();
   const registerFormRef = useRef();
 
   function handleButtonClick(event) {
@@ -59,7 +60,7 @@ export default function Register() {
               else {
                 tokenService.setUser(data);
                 tokenService.updateLocalAccessToken(data.token);
-                window.location.href = "/";
+                navigate("/");
               }
             })
             .catch((message) => {
