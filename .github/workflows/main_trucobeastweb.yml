@@ -17,9 +17,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+
       - name: Set CI environment variable
         run: echo "CI=false" >> $GITHUB_ENV
-        
+
       - name: Install dependencies and build React app
         run: |
           cd frontend
@@ -47,25 +48,19 @@ jobs:
         with:
           name: release
 
-      - name: Verify downloaded files
-        run: |
-          ls -l # List files to ensure release.zip is present
-
-      - name: Prepare deployment folder
-        run: |
-          mkdir -p deploy
-          unzip release.zip -d ./deploy
+      - name: List files for debugging
+        run: ls -R
 
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8DC62A1814EE4AAF9BA44CDBB790E9DA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7892288A02B0460FA0C291ECB4FFC19E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2A446AEB9D69418CBEFDF71606709691 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8DC62A1814EE4AAF9BA44CDBB790E9DA  }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7892288A02B0460FA0C291ECB4FFC19E  }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2A446AEB9D69418CBEFDF71606709691  }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'TrucoBeastWeb'
           slot-name: 'Production'
-          package: ./deploy
+          package: './'
