@@ -41,5 +41,6 @@
   },
   "devDependencies": {
     "eslint-plugin-react-hooks": "^5.1.0"
-  }
+  },
+  "homepage": "/"
 }
